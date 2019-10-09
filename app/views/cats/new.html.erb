@@ -1,0 +1,22 @@
+<form action=" <%= cats_url %> " method="post">
+  <label for="name">Name</label>
+  <input id="name" type="text" name="cat[name]" />
+
+  <br />
+
+  <label for="birth_date">Birth date</label>
+  <input id="birth_date" type="date" name="cat[birth_date]" />
+
+  <label for="color">Color</label>
+  <select name="cat[color]" id="color">
+    <option disabled selected>-- select a color --</option>
+      <% Cat::CAT_COLORS.each do |color| %>
+        <option
+          <%= color == color %>
+          value="<%= color %>">
+          <%= color.upcase %>
+        </option>
+    <% end %>
+  </select>
+  <br />
+</form>
