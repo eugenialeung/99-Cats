@@ -1,25 +1,29 @@
-<h1>Add a new cat!</h1>
+<h1>Edit <%=@cat.name %></h1>
 
-<%= render 'form', action: :new, cat: @cat %>
+<%= render 'form', cat: @cat, action: :edit %>
 
 <!--
-<form action=" <%= cats_url %> " method="post">
+
+<form action=" <%= cat_url(@cat) %> " method="post">
+
+  <input type="hidden" name="_method" value="PATCH">
+
   <label for="name">Name</label>
-  <input id="name" type="text" name="cat[name]" />
+  <input id="name" type="text" name="cat[name]" value="<%= @cat.name %>"/>
 
   <br />
 
   <label for="birth_date">Birth date</label>
-  <input id="birth_date" type="date" name="cat[birth_date]" />
+  <input id="birth_date" type="date" name="cat[birth_date]" value="<%= @cat.birth_date %>"/>
 
   <br>
 
   <label for="color">Color</label>
   <select name="cat[color]" id="color">
-    <option disabled selected>-- select a color --</option>
+    <option disabled>-- select a color --</option>
       <% Cat::CAT_COLORS.each do |color| %>
         <option
-          <%= color %>
+          <%= @cat.color == color ? "selected" : "" %>
           value="<%= color %>">
           <%= color.upcase %>
         </option>
@@ -33,6 +37,7 @@
     name="cat[sex]"
     value="M"
     id="cat_sex_male"
+    <%= @cat.sex == "M" ? "checked" : "" %>
   >
   <label for="cat_sex_male">Male</label>
   <input
@@ -40,13 +45,16 @@
     name="cat[sex]"
     value="F"
     id="cat_sex_female"
+    <%= @cat.sex == "F" ? "checked" : "" %>
   >
-  <label for="cat_sex_female">Female</label>
+  <label for="cat_sex_female>Female</label>
 
   <br>
 
   <label for="description">Description</label>
-  <textarea id="description" name="cat[description]"></textarea>
+  <textarea id="description" name="cat[description]">
+    <%= @cat.description %>
+  </textarea>
 
   <br>
 
