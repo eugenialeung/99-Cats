@@ -22,15 +22,9 @@
     <th>End Date</th>
     <th>Status</th>
   </tr>
-    <tr>
-        <% @cat.rental_requests.order('start_date').each do |req| %>
-        <td><%= req.start_date %></td>
-        <td><%= req.end_date %></td>
-        <td><%= req.status %></td>
-    </tr>
-
-    
-  <% end %>
+<% @cat.rental_requests.order('start_date').each do |req| %>
+    <%= render 'req_tr', req: req %>
+<% end %>
 
 </table>
  
