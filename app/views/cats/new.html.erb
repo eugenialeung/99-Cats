@@ -1,6 +1,10 @@
 <h1>Add a new cat!</h1>
 
+    <%= render 'shared/errors' %>
+
 <%= render 'form', action: :new, cat: @cat %>
+
+
 
 <!--
 <form action=" <%= cats_url %> " method="post">
