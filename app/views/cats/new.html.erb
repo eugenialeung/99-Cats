@@ -4,6 +4,10 @@
 
 <%= render 'form', action: :new, cat: @cat %>
 
+  <% content_for :footer do %>
+    <p>This is the cat's new page.</p>
+  <% end %>
+
 
 
 <!--
